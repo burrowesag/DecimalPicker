@@ -81,49 +81,49 @@ public class DecimalPicker extends RelativeLayout {
 
         editText = (EditText) view.findViewById(R.id.number_counter);
         editText.setFilters(new InputFilter[]{new DecimalInputFilter(beforeDecimal, afterDecimal)});
-        editText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//        editText.addTextChangedListener(new TextWatcher() {
+//             @Override
+//             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
+//             }
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//             @Override
+//             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-            }
+//             }
 
-            @Override
-            public void afterTextChanged(Editable s) {
-                String value = s.toString().trim();
-                double valueDouble = -1;
-                try {
-                    valueDouble = parseDouble(value.isEmpty() ? "0" : value);
-                } catch (NumberFormatException e) {
-                    e.printStackTrace();
-                }
-                if (valueDouble >= 0 && valueDouble <= finalNumber){
-                    lastNumber = currentNumber;
-                    currentNumber = valueDouble;
-                    callListener(DecimalPicker.this);
-                } else if (valueDouble > finalNumber){//https://stackoverflow.com/questions/5357455/limit-decimal-places-in-android-edittext
-                    lastNumber = currentNumber;
-                    currentNumber = finalNumber;
-                    s.clear();
-                    s.insert(0, String.valueOf(finalNumber));
-                }
-            }
-        });
-        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+//             @Override
+//             public void afterTextChanged(Editable s) {
+//                 String value = s.toString().trim();
+//                 double valueDouble = -1;
+//                 try {
+//                     valueDouble = parseDouble(value.isEmpty() ? "0" : value);
+//                 } catch (NumberFormatException e) {
+//                     e.printStackTrace();
+//                 }
+//                 if (valueDouble >= 0 && valueDouble <= finalNumber){
+//                     lastNumber = currentNumber;
+//                     currentNumber = valueDouble;
+//                     callListener(DecimalPicker.this);
+//                 } else if (valueDouble > finalNumber){//https://stackoverflow.com/questions/5357455/limit-decimal-places-in-android-edittext
+//                     lastNumber = currentNumber;
+//                     currentNumber = finalNumber;
+//                     s.clear();
+//                     s.insert(0, String.valueOf(finalNumber));
+//                 }
+//             }
+//         });
+//         editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_NEXT) {
-                    String num = ((EditText) v).getText().toString();
-                    setNumber(num, true);
-                }
-                return false;
-            }
-        });
+//             @Override
+//             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+//                 if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_NEXT) {
+//                     String num = ((EditText) v).getText().toString();
+//                     setNumber(num, true);
+//                 }
+//                 return false;
+//             }
+//         });
 
         LinearLayout mLayout = (LinearLayout) view.findViewById(R.id.decimal_picker_layout);
 
