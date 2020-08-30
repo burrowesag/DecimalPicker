@@ -81,6 +81,7 @@ public class DecimalPicker extends RelativeLayout {
 
         editText = (EditText) view.findViewById(R.id.number_counter);
         editText.setFilters(new InputFilter[]{new DecimalInputFilter(beforeDecimal, afterDecimal)});
+        editText.setFocusable(false)
 //        editText.addTextChangedListener(new TextWatcher() {
 //             @Override
 //             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
